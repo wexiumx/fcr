@@ -20,6 +20,8 @@ All pull request code (including tests), issue descriptions, comments, public re
 
 This applies to everything you submit here: code, tests, documentation, issue text, and discussion comments. Contributions that appear to be LLM-generated may be closed without review.
 
+If you really want to use LLMs, that's your choice, but then please don't contribute to this project at all.
+
 ## Before opening a pull request
 
 1. Keep pull requests small and focused on one thing.
