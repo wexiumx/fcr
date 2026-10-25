@@ -27,3 +27,9 @@ If you really want to use LLMs, that's your choice, but then please don't contri
 1. Keep pull requests small and focused on one thing.
 2. Make sure the project builds and any existing tests pass.
 3. Write a clear description of what the change does and why.
+
+## Opening an issue
+A good issue includes:
+- Logs or screenshots, if they help
+- a good name, for example: `Bug/Idea: short explanation`
+
