@@ -14,10 +14,10 @@ fn extract_strings_from_file(array: Vec<String>) -> Vec<(String, String, String)
             .expect("Failed to get file without extension")
             .to_string_lossy()
             .to_string();
-        let file_extension = path_file.extension()
-            .expect("Failed to get file extension")
-            .to_string_lossy()
-            .to_string();
+        let file_extension = match path_file.extension() {
+           Some(extension) => extension.to_string_lossy().to_string(),
+           None => String::from(""), 
+        };
 
         let tuple: (String, String, String) = (file, file_without_ex, file_extension);
         new_array.push(tuple);
@@ -30,6 +30,7 @@ fn comparing_extensions(array: Vec<(String, String, String)>) {
     for (file, file_without_ex, extension) in array {
 
         match extension.as_str() {
+            "" => car::binary(file),
             "rs" => car::rust(file, file_without_ex),
             "zig" => car::zig(file),
             "c" => car::c(file, file_without_ex),

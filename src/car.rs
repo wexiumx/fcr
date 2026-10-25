@@ -2,6 +2,12 @@
 // car -> Compile And Run
 use rsbash::rashf;
 
+pub fn binary(file: String) {
+    let Ok((_, stdout, stderr)) = rashf!("./{}", file) else { panic!("failed to launch binary") };
+    println!("{}", stdout);
+    println!("{}", stderr);
+}
+
 pub fn rust(file: String, file_without_ex: String) {
     let Ok((_, stdout, stderr)) = rashf!("rustc {} && ./{}", file, file_without_ex) else { panic!("failed to print file") };
     println!("{}", stdout);
