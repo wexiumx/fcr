@@ -1,3 +1,5 @@
+pub mod car;
+
 use std::path::Path;
 
 
@@ -28,12 +30,12 @@ fn comparing_extensions(array: Vec<(String, String, String)>) {
     for (file, file_without_ex, extension) in array {
 
         match extension.as_str() {
-            "rs" => println!("RUST is detected!: file: {}, file without extension: {}, file extension: {}", file, file_without_ex, extension),
-            "zig" => println!("ZIG is detected!: file: {}, file without extension: {}, file extension: {}", file, file_without_ex, extension),
-            "c" => println!("ZIG is detected!: file: {}, file without extension: {}, file extension: {}", file, file_without_ex, extension),
-            "c++" | "cpp" => println!("C++ is detected!: file: {}, file without extension: {}, file extension: {}", file, file_without_ex, extension),
-            "go" => println!("GO is detected!: file: {}, file without extension: {}, file extension: {}", file, file_without_ex, extension),
-            _ => println!("Sorry, we doesn't support that file extension!"),
+            "rs" => car::rust(file, file_without_ex),
+            "zig" => car::zig(file),
+            "c" => car::c(file, file_without_ex),
+            "c++" | "cpp" => car::cpp(file, file_without_ex),
+            "go" => car::go(file),
+            _ => println!("Sorry, this file extension we don't support (yet)"),
         }; 
     };
 }
