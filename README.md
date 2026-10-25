@@ -85,8 +85,23 @@ Hello, from ZIG file!
 - Go
 - Rust
 - Zig
+- Python
+- Javascript
+- Java
+- C#
+- R
+- PHP
+- Fortran
+- Swift
+- Haskell
+- Elixir
+- OCaml
+- Common Lisp
+- Scheme
+- Cloujure
+- Binary files
 
-More languages are coming soon.
+
 
 
 
