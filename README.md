@@ -24,6 +24,24 @@ That's a lot to type every single time. And if you juggle several languages, you
 - **Less typing.** `fcr file.c` instead of a long compile-and-run chain.
 - **Run many files at once.** Pass several files (or a glob) and `fcr` runs them one after another.
 
+
+
+## Installation
+
+You need [Rust](https://rustup.rs/) installed.
+
+```bash
+cargo install --git https://github.com/wexiumx/fcr
+```
+
+Then try it:
+
+```bash
+fcr your_file.c
+```
+
+
+
 ## Examples
 
 Given this C++ file:
@@ -70,18 +88,5 @@ Hello, from ZIG file!
 
 More languages are coming soon.
 
-## Installation
-
-You need [Rust](https://rustup.rs/) installed.
-
-```bash
-cargo install --git https://github.com/wexiumx/fcr
-```
-
-Then try it:
-
-```bash
-fcr your_file.c
-```
 
 
