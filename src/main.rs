@@ -1,89 +1,49 @@
 use std::path::Path;
-use rsbash::rashf;
 
 
-enum FileExtension {
-    Rust,
-    Zig,
-    C,
-    Cpp,
-    Go,
-}
-
-impl FileExtension {
-    // car = compile and run;
-    fn car_rust(file: &str, file_without_ex: &str) {
-        rashf!("rustc {} && ./{}", file, file_without_ex);
-    }
-
-    fn run_zig(file: &str) {
-        rashf!("zig run {}", file);
-    }
-
-    fn car_c(file: &str, file_without_ex: &str) {
-        rashf!("gcc {} -o {} && ./{}", file, file, file_without_ex);
-    }
-
-    fn car_cpp(file: &str, file_without_ex: &str) {
-        rashf!("");
-    }
-
-    fn run_go(file: &str) {
-        rashf!("go run {}", file);
-    }
-}
-
-
-
-
-fn get_file_extension(array: Vec<String>) -> Vec<&str> {
-    let mut new_array: Vec<String> = Vec::new();    
+fn extract_strings_from_file(array: Vec<String>) -> Vec<(String, String, String)> {
+    let mut new_array: Vec<(String, String, String)> = Vec::new();    
 
     for file in array {
-        let extension = Path::new(&file).extension();
+        let path_file = Path::new(&file);
 
-        // I will add error handeling later
-        match extension {
-            Some(extension) => new_array.push(extension.to_string_lossy().to_string()),
-            _ => println!("failed to get file extension!"),
-        }
+        let file = path_file.to_string_lossy().to_string();
+        let file_without_ex = path_file.file_stem()
+            .expect("Failed to get file without extension")
+            .to_string_lossy()
+            .to_string();
+        let file_extension = path_file.extension()
+            .expect("Failed to get file extension")
+            .to_string_lossy()
+            .to_string();
+
+        let tuple: (String, String, String) = (file, file_without_ex, file_extension);
+        new_array.push(tuple);
     };
 
     new_array
 }
 
-fn comparing_extensions(array: Vec<&str>) {
-    for extension in array {
+fn comparing_extensions(array: Vec<(String, String, String)>) {
+    for (file, file_without_ex, extension) in array {
 
-        let extension = match extension {
-            "rs" => FileExtension::Rust,
-            "zig" => FileExtension::Zig,
-            "c" => FileExtension::C,
-            "c++" | "cpp" => FileExtension::Cpp,
-            "go" => FileExtension::Go,
-            _ => println!("Sorry, we doesn't support that file extension!"),         } 
-
-
-        
-        match extension {
-            FileExtension::Rust => ,
-            FileExtension::Zig => ,
-            FileExtension::C => ,
-            FileExtension::Cpp => ,
-            FileExtension::Go => , 
-        }
-    }
+        match extension.as_str() {
+            "rs" => println!("RUST is detected!: file: {}, file without extension: {}, file extension: {}", file, file_without_ex, extension),
+            "zig" => println!("ZIG is detected!: file: {}, file without extension: {}, file extension: {}", file, file_without_ex, extension),
+            "c" => println!("ZIG is detected!: file: {}, file without extension: {}, file extension: {}", file, file_without_ex, extension),
+            "c++" | "cpp" => println!("C++ is detected!: file: {}, file without extension: {}, file extension: {}", file, file_without_ex, extension),
+            "go" => println!("GO is detected!: file: {}, file without extension: {}, file extension: {}", file, file_without_ex, extension),
+            _ => println!("Sorry, we doesn't support that file extension!"),
+        }; 
+    };
 }
 
 
 fn main() {
-    let args: Vec<String> = std::env::args().collect();
-    let file_extension_array = get_file_extension(args);
+    let mut args: Vec<String> = std::env::args().collect();
+    args.remove(0);
+
+    let file_extension_array = extract_strings_from_file(args);
 
     comparing_extensions(file_extension_array)
-
-
-    for arg in file_extension_array {
-        println!(" extensions: {}", arg);
-    }
 }
