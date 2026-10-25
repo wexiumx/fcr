@@ -35,7 +35,21 @@ fn comparing_extensions(array: Vec<(String, String, String)>) {
             "c" => car::c(file, file_without_ex),
             "c++" | "cpp" => car::cpp(file, file_without_ex),
             "go" => car::go(file),
-            _ => println!("Sorry, this file extension we don't support (yet)"),
+            "py" => car::python(file),
+            "js" => car::javascript(file),
+            "java" => car::java(file, file_without_ex),
+            "cs" => car::c_sharp(file),
+            "R" | "r" => car::r(file),
+            "php" => car::php(file),
+            "f90" | "f95" | "f03" | "f08" => car::fortran(file, file_without_ex),
+            "swift" => car::swift(file),
+            "hs" => car::haskell(file),
+            "exs" => car::elixir(file),
+            "ml" => car::ocaml(file),
+            "lisp" | "lsp" => car::lisp(file),
+            "scm" | "ss" => car::scheme(file),
+            "clj"  => car::cloujure(file),
+            _ => println!("Sorry, this file extension: {} we don't support", file),
         }; 
     };
 }
