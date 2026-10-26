@@ -6,10 +6,12 @@ mod flags;
 
 fn flag_checker(array: Vec<String>) {
     for arg in array {
-        match arg.as_str() {
-            "-v" | "--version" => { flags::v_flag(); exit(0) },
-            "-h" | "--help" => { flags::h_flag(); exit(0) },
-            _ => { flags::unkown_flag(&arg); exit(0) },
+        if arg.chars().next().unwrap() == '-' {
+            match arg.as_str() {
+                "-v" | "--version" => { flags::v_flag(); exit(0) },
+                "-h" | "--help" => { flags::h_flag(); exit(0) },
+                _ => { flags::unkown_flag(&arg); exit(0) },
+            };
         };
     };
 }
