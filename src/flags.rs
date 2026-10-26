@@ -10,7 +10,9 @@ pub fn v_flag() {
 }
 
 pub fn unkown_flag(arg: &str) {
-    println!("error: unexpectd argument `{}` found", arg);
-    println!("Usage: fcr [OPTIONS] [FILE]...");
+    use colored_text::Colorize;
+    
+    println!("{} unexpectd argument `{}` found", "error:".red().bold(), arg);
+    println!("{} {} [OPTIONS] [FILE]...", "Usage:".bold().underline(), "fcr".bold());
     println!("For more information, try `--help`");
 }
