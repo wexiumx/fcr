@@ -102,6 +102,12 @@ Hello, from ZIG file!
 - Binary files
 
 
+# Roadmap to v1.0.0
 
+- [x] create working cli
+- [x] add support for other programming languages + binary files
+- [x] add support for basic flags such as: --version | --help
+- [ ] give user the choice of choosing compiler by using the flags
+- [ ] add function where user can choose the default compiler, instead of using the flags
 
 
