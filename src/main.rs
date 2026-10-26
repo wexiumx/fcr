@@ -1,7 +1,18 @@
-pub mod car;
-
 use std::path::Path;
+use std::process::exit;
 
+pub mod car;
+mod flags;
+
+fn flag_checker(array: Vec<String>) {
+    for arg in array {
+        match arg.as_str() {
+            "-v" | "--version" => { flags::v_flag(); exit(0) },
+            "-h" | "--help" => { exit(0) },
+            _ => { flags::unkown_flag(&arg); exit(0) },
+        };
+    };
+}
 
 fn extract_strings_from_file(array: Vec<String>) -> Vec<(String, String, String)> {
     let mut new_array: Vec<(String, String, String)> = Vec::new();    
@@ -59,6 +70,8 @@ fn comparing_extensions(array: Vec<(String, String, String)>) {
 fn main() {
     let mut args: Vec<String> = std::env::args().collect();
     args.remove(0);
+
+    flag_checker(args.clone());
 
     let file_extension_array = extract_strings_from_file(args);
 
