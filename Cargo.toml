@@ -6,3 +6,4 @@ edition = "2024"
 [dependencies]
 rsbash = "2.1.0"
 github_release_check = "0.2.1"
+colored_text = "0.6.0"
