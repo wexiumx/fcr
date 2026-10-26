@@ -1,3 +1,5 @@
+use colored_text::Colorize;
+
 pub fn v_flag() {
     use github_release_check::GitHub;
 
@@ -9,8 +11,17 @@ pub fn v_flag() {
     println!("https://github.com/wexiumx/fcr");
 }
 
+pub fn h_flag() {
+    println!("fast code runner\n");
+
+    println!("{} {} [OPTIONS] [FILE]...\n", "Usage:".bold().underline(), "fcr".bold());
+
+    println!("{}", "META OPTIONS".bold().underline());
+    println!("  {}    Print help", "-h, --help".bold());
+    println!("  {}    Print version of program", "-v, --version".bold());
+}
+
 pub fn unkown_flag(arg: &str) {
-    use colored_text::Colorize;
     
     println!("{} unexpectd argument `{}` found", "error:".red().bold(), arg);
     println!("{} {} [OPTIONS] [FILE]...", "Usage:".bold().underline(), "fcr".bold());
